@@ -86,7 +86,7 @@
       transition: background 0.3s ease, transform 0.2s ease;
       margin-top: 1rem;
       cursor: pointer;
-      user-select: none;
+      border: none;
     }
 
     @keyframes pulse {
@@ -126,7 +126,6 @@
       box-shadow: 0 0 10px #3de03d, 0 0 30px #3de03d;
     }
 
-    /* MAIN MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -181,6 +180,7 @@
     .modal .btn {
       font-size: 1.2rem;
       padding: 14px 32px;
+      cursor: pointer;
     }
 
     .modal-close {
@@ -209,72 +209,13 @@
       margin-bottom: 1.5rem;
     }
 
-    /* CUSTOM WARNING MODAL */
-    #warningModal {
-      display: none;
-      position: fixed;
-      z-index: 10000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0,0,0,0.9);
-      backdrop-filter: blur(10px);
-      color: #ffdddd;
-      padding: 2rem;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    #warningModal .modal-content {
-      background: #700000;
-      max-width: 480px;
-      margin: 5rem auto;
-      padding: 2rem 3rem;
-      border-radius: 20px;
-      box-shadow: 0 0 25px #ff4444;
-      animation: modalFadeIn 0.3s ease forwards;
-    }
-
-    #warningModal h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #ff5555;
-    }
-
-    #warningModal p {
-      font-size: 1.1rem;
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      color: #ffcccc;
-    }
-
-    #warningModal .btn {
-      margin: 0 1rem;
-      min-width: 100px;
-      font-weight: 700;
-    }
-
-    #warningModal .btn.cancel {
-      background: #a33a3a;
-      box-shadow: 0 0 10px #aa4444;
-    }
-
-    #warningModal .btn.cancel:hover {
-      background: #d9534f;
-      box-shadow: 0 0 15px #d9534f;
-      transform: scale(1.1);
-    }
-
-    #warningModal .btn.proceed {
-      background: #44aa44;
-      box-shadow: 0 0 10px #44aa44;
-    }
-
-    #warningModal .btn.proceed:hover {
-      background: #67cc67;
-      box-shadow: 0 0 15px #67cc67;
-      transform: scale(1.1);
+    /* Additional spacing for warning modal buttons */
+    .modal-warning-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
   </style>
 </head>
@@ -305,20 +246,21 @@
   </div>
 
   <!-- WARNING MODAL -->
-  <div id="warningModal">
-    <div class="modal-content">
-      <h2>Important Subscription Notice</h2>
-      <p>
-        ⚠️ VIP access is a monthly subscription.<br><br>
-        Please make sure you understand this before purchasing.<br><br>
-        Do you wish to continue to the purchase?
+  <div id="warningModal" class="modal" onclick="closeWarningModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-close" onclick="closeWarningModal()">&times;</div>
+      <h2>Important Notice</h2>
+      <p class="description">
+        Please note that the VIP access is a <strong>monthly subscription</strong>. Your payment will renew automatically every month unless canceled.
       </p>
-      <button class="btn cancel" onclick="closeWarningModal()">Cancel</button>
-      <button class="btn proceed" onclick="proceedToVIP()">Proceed</button>
+      <div class="modal-warning-buttons">
+        <button class="btn" onclick="proceedToVIP()">Continue</button>
+        <button class="btn" style="background: linear-gradient(45deg, #c0392b, #922b21); box-shadow: 0 0 5px #c0392b, 0 0 15px #c0392b;" onclick="closeWarningModal()">Cancel</button>
+      </div>
     </div>
   </div>
 
-  <!-- MAIN VIP MODALS -->
+  <!-- VIP MODALS -->
   <div id="modal1" class="modal" onclick="closeModal(event, 1)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-close" onclick="closeModal(event, 1)">&times;</div>
@@ -381,20 +323,29 @@
     }
 
     function proceedToVIP() {
+      // Hide warning modal
       closeWarningModal();
+
       if (selectedTier !== null) {
         const vipModal = document.getElementById('modal' + selectedTier);
-        vipModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+        if (vipModal) {
+          vipModal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        } else {
+          console.error('VIP modal for tier ' + selectedTier + ' not found.');
+        }
       }
     }
 
     function closeModal(event, tier) {
       event.stopPropagation();
-      document.getElementById('modal' + tier).style.display = 'none';
-      document.body.style.overflow = '';
-      selectedTier = null;
+      const modal = document.getElementById('modal' + tier);
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
     }
   </script>
+
 </body>
 </html>
