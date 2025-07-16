@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="icon" href="favicon.png" type="image/png">
   <title>Heaven LifeSteal</title>
   <style>
     body {
@@ -85,8 +85,6 @@
       animation: pulse 2.5s infinite;
       transition: background 0.3s ease, transform 0.2s ease;
       margin-top: 1rem;
-      cursor: pointer;
-      border: none;
     }
 
     @keyframes pulse {
@@ -180,7 +178,6 @@
     .modal .btn {
       font-size: 1.2rem;
       padding: 14px 32px;
-      cursor: pointer;
     }
 
     .modal-close {
@@ -208,15 +205,6 @@
       padding: 0.75rem;
       margin-bottom: 1.5rem;
     }
-
-    /* Additional spacing for warning modal buttons */
-    .modal-warning-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
   </style>
 </head>
 <body>
@@ -224,51 +212,43 @@
   <h1>💎 Buy VIP Access</h1>
 
   <div class="tiers-container">
-    <div class="tier" onclick="showWarningModal(1)">
+    <div class="tier" onclick="openModal(1)">
       <h2>VIP Tier 1</h2>
       <p class="price">$5</p>
     </div>
 
-    <div class="tier" onclick="showWarningModal(2)">
+    <div class="tier" onclick="openModal(2)">
       <h2>VIP Tier 2</h2>
       <p class="price">$10</p>
     </div>
 
-    <div class="tier" onclick="showWarningModal(3)">
+    <div class="tier" onclick="openModal(3)">
       <h2>VIP Tier 3</h2>
       <p class="price">$15</p>
     </div>
 
-    <div class="tier" onclick="showWarningModal(4)">
+    <div class="tier" onclick="openModal(4)">
       <h2>VIP Tier 4</h2>
       <p class="price">$20</p>
     </div>
   </div>
 
-  <!-- WARNING MODAL -->
-  <div id="warningModal" class="modal" onclick="closeWarningModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div class="modal-close" onclick="closeWarningModal()">&times;</div>
-      <h2>Important Notice</h2>
-      <p class="description">
-        Please note that the VIP access is a <strong>monthly subscription</strong>. Your payment will renew automatically every month unless canceled.
-      </p>
-      <div class="modal-warning-buttons">
-        <button class="btn" onclick="proceedToVIP()">Continue</button>
-        <button class="btn" style="background: linear-gradient(45deg, #c0392b, #922b21); box-shadow: 0 0 5px #c0392b, 0 0 15px #c0392b;" onclick="closeWarningModal()">Cancel</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIP MODALS -->
+  <!-- MODALS -->
   <div id="modal1" class="modal" onclick="closeModal(event, 1)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-close" onclick="closeModal(event, 1)">&times;</div>
       <h2>VIP Tier 1</h2>
       <p class="price">$5</p>
-      <p class="description">VIP Armor & Role on Discord and Minecraft + exclusive Discord channel.</p>
-      <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/5" target="_blank" rel="noopener noreferrer">Buy Now for $5</a>
+      <p class="description">
+        VIP Armor & Role on Discord and Minecraft + exclusive Discord channel.
+      </p>
+      <p class="warning">
+        ⚠️ <strong>Note:</strong> This is a manual monthly subscription.<br>
+        You must send payment each month to maintain VIP status.<br><br>
+        ⚠️ Make sure to include your gamertag in the payment note to receive the VIP role.<br>
+        By sending money to <strong>iiGeaex</strong> on CashApp, you agree that <u>payments are non-refundable</u>.
+      </p>
+      <a class="btn" href="https://cash.app/$iiGeaex/5" target="_blank">Buy Now for $5</a>
     </div>
   </div>
 
@@ -277,9 +257,16 @@
       <div class="modal-close" onclick="closeModal(event, 2)">&times;</div>
       <h2>VIP Tier 2</h2>
       <p class="price">$10</p>
-      <p class="description">All from Tier 1 & 2% off all purchases on the shop when gifting vip to your friends.</p>
-      <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/10" target="_blank" rel="noopener noreferrer">Buy Now for $10</a>
+      <p class="description">
+        All from Tier 1 & 2% off all purchases on the shop when gifting VIP to your friends.
+      </p>
+      <p class="warning">
+        ⚠️ <strong>Note:</strong> This is a manual monthly subscription.<br>
+        You must send payment each month to maintain VIP status.<br><br>
+        ⚠️ Make sure to include your gamertag in the payment note to receive the VIP role.<br>
+        By sending money to <strong>iiGeaex</strong> on CashApp, you agree that <u>payments are non-refundable</u>.
+      </p>
+      <a class="btn" href="https://cash.app/$iiGeaex/10" target="_blank">Buy Now for $10</a>
     </div>
   </div>
 
@@ -288,9 +275,16 @@
       <div class="modal-close" onclick="closeModal(event, 3)">&times;</div>
       <h2>VIP Tier 3</h2>
       <p class="price">$15</p>
-      <p class="description">Everything in Tier 2 + The Ability to fly in Minecraft.</p>
-      <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/15" target="_blank" rel="noopener noreferrer">Buy Now for $15</a>
+      <p class="description">
+        Everything in Tier 2 + The Ability to fly in Minecraft.
+      </p>
+      <p class="warning">
+        ⚠️ <strong>Note:</strong> This is a manual monthly subscription.<br>
+        You must send payment each month to maintain VIP status.<br><br>
+        ⚠️ Make sure to include your gamertag in the payment note to receive the VIP role.<br>
+        By sending money to <strong>iiGeaex</strong> on CashApp, you agree that <u>payments are non-refundable</u>.
+      </p>
+      <a class="btn" href="https://cash.app/$iiGeaex/15" target="_blank">Buy Now for $15</a>
     </div>
   </div>
 
@@ -299,51 +293,29 @@
       <div class="modal-close" onclick="closeModal(event, 4)">&times;</div>
       <h2>VIP Tier 4</h2>
       <p class="price">$20</p>
-      <p class="description">Full VIP access: all tiers + 5% off all purchases on the shop when gifting vip to your friends.</p>
-      <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/20" target="_blank" rel="noopener noreferrer">Buy Now for $20</a>
+      <p class="description">
+        Full VIP access: all tiers + 5% off all purchases on the shop when gifting VIP to your friends.
+      </p>
+      <p class="warning">
+        ⚠️ <strong>Note:</strong> This is a manual monthly subscription.<br>
+        You must send payment each month to maintain VIP status.<br><br>
+        ⚠️ Make sure to include your gamertag in the payment note to receive the VIP role.<br>
+        By sending money to <strong>iiGeaex</strong> on CashApp, you agree that <u>payments are non-refundable</u>.
+      </p>
+      <a class="btn" href="https://cash.app/$iiGeaex/20" target="_blank">Buy Now for $20</a>
     </div>
   </div>
 
   <script>
-    let selectedTier = null;
-
-    function showWarningModal(tier) {
-      selectedTier = tier;
-      const warningModal = document.getElementById('warningModal');
-      warningModal.style.display = 'block';
+    function openModal(tier) {
+      document.getElementById('modal' + tier).style.display = 'block';
       document.body.style.overflow = 'hidden';
-    }
-
-    function closeWarningModal() {
-      const warningModal = document.getElementById('warningModal');
-      warningModal.style.display = 'none';
-      document.body.style.overflow = '';
-      selectedTier = null;
-    }
-
-    function proceedToVIP() {
-      // Hide warning modal
-      closeWarningModal();
-
-      if (selectedTier !== null) {
-        const vipModal = document.getElementById('modal' + selectedTier);
-        if (vipModal) {
-          vipModal.style.display = 'block';
-          document.body.style.overflow = 'hidden';
-        } else {
-          console.error('VIP modal for tier ' + selectedTier + ' not found.');
-        }
-      }
     }
 
     function closeModal(event, tier) {
       event.stopPropagation();
-      const modal = document.getElementById('modal' + tier);
-      if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
+      document.getElementById('modal' + tier).style.display = 'none';
+      document.body.style.overflow = '';
     }
   </script>
 
