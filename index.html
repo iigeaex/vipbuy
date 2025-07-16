@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="favicon.png" type="image/png" />
   <title>Heaven LifeSteal</title>
   <style>
     body {
@@ -85,6 +85,8 @@
       animation: pulse 2.5s infinite;
       transition: background 0.3s ease, transform 0.2s ease;
       margin-top: 1rem;
+      cursor: pointer;
+      user-select: none;
     }
 
     @keyframes pulse {
@@ -124,6 +126,7 @@
       box-shadow: 0 0 10px #3de03d, 0 0 30px #3de03d;
     }
 
+    /* MAIN MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -205,6 +208,74 @@
       padding: 0.75rem;
       margin-bottom: 1.5rem;
     }
+
+    /* CUSTOM WARNING MODAL */
+    #warningModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(10px);
+      color: #ffdddd;
+      padding: 2rem;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    #warningModal .modal-content {
+      background: #700000;
+      max-width: 480px;
+      margin: 5rem auto;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #ff4444;
+      animation: modalFadeIn 0.3s ease forwards;
+    }
+
+    #warningModal h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff5555;
+    }
+
+    #warningModal p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      color: #ffcccc;
+    }
+
+    #warningModal .btn {
+      margin: 0 1rem;
+      min-width: 100px;
+      font-weight: 700;
+    }
+
+    #warningModal .btn.cancel {
+      background: #a33a3a;
+      box-shadow: 0 0 10px #aa4444;
+    }
+
+    #warningModal .btn.cancel:hover {
+      background: #d9534f;
+      box-shadow: 0 0 15px #d9534f;
+      transform: scale(1.1);
+    }
+
+    #warningModal .btn.proceed {
+      background: #44aa44;
+      box-shadow: 0 0 10px #44aa44;
+    }
+
+    #warningModal .btn.proceed:hover {
+      background: #67cc67;
+      box-shadow: 0 0 15px #67cc67;
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -212,28 +283,42 @@
   <h1>💎 Buy VIP Access</h1>
 
   <div class="tiers-container">
-    <div class="tier" onclick="openModal(1)">
+    <div class="tier" onclick="showWarningModal(1)">
       <h2>VIP Tier 1</h2>
       <p class="price">$5</p>
     </div>
 
-    <div class="tier" onclick="openModal(2)">
+    <div class="tier" onclick="showWarningModal(2)">
       <h2>VIP Tier 2</h2>
       <p class="price">$10</p>
     </div>
 
-    <div class="tier" onclick="openModal(3)">
+    <div class="tier" onclick="showWarningModal(3)">
       <h2>VIP Tier 3</h2>
       <p class="price">$15</p>
     </div>
 
-    <div class="tier" onclick="openModal(4)">
+    <div class="tier" onclick="showWarningModal(4)">
       <h2>VIP Tier 4</h2>
       <p class="price">$20</p>
     </div>
   </div>
 
-  <!-- MODALS -->
+  <!-- WARNING MODAL -->
+  <div id="warningModal">
+    <div class="modal-content">
+      <h2>Important Subscription Notice</h2>
+      <p>
+        ⚠️ VIP access is a monthly subscription.<br><br>
+        Please make sure you understand this before purchasing.<br><br>
+        Do you wish to continue to the purchase?
+      </p>
+      <button class="btn cancel" onclick="closeWarningModal()">Cancel</button>
+      <button class="btn proceed" onclick="proceedToVIP()">Proceed</button>
+    </div>
+  </div>
+
+  <!-- MAIN VIP MODALS -->
   <div id="modal1" class="modal" onclick="closeModal(event, 1)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-close" onclick="closeModal(event, 1)">&times;</div>
@@ -241,7 +326,7 @@
       <p class="price">$5</p>
       <p class="description">VIP Armor & Role on Discord and Minecraft + exclusive Discord channel.</p>
       <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/5" target="_blank">Buy Now for $5</a>
+      <a class="btn" href="https://cash.app/$iiGeaex/5" target="_blank" rel="noopener noreferrer">Buy Now for $5</a>
     </div>
   </div>
 
@@ -252,7 +337,7 @@
       <p class="price">$10</p>
       <p class="description">All from Tier 1 & 2% off all purchases on the shop when gifting vip to your friends.</p>
       <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/10" target="_blank">Buy Now for $10</a>
+      <a class="btn" href="https://cash.app/$iiGeaex/10" target="_blank" rel="noopener noreferrer">Buy Now for $10</a>
     </div>
   </div>
 
@@ -263,7 +348,7 @@
       <p class="price">$15</p>
       <p class="description">Everything in Tier 2 + The Ability to fly in Minecraft.</p>
       <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/15" target="_blank">Buy Now for $15</a>
+      <a class="btn" href="https://cash.app/$iiGeaex/15" target="_blank" rel="noopener noreferrer">Buy Now for $15</a>
     </div>
   </div>
 
@@ -274,22 +359,42 @@
       <p class="price">$20</p>
       <p class="description">Full VIP access: all tiers + 5% off all purchases on the shop when gifting vip to your friends.</p>
       <p class="warning">⚠️ <strong>Make sure the note says your gamertag</strong> or you might not receive the VIP role.<br>By sending the money to <strong>iiGeaex</strong> on CashApp, you agree that <u>you will not be refunded</u>.</p>
-      <a class="btn" href="https://cash.app/$iiGeaex/20" target="_blank">Buy Now for $20</a>
+      <a class="btn" href="https://cash.app/$iiGeaex/20" target="_blank" rel="noopener noreferrer">Buy Now for $20</a>
     </div>
   </div>
 
   <script>
-    function openModal(tier) {
-      document.getElementById('modal' + tier).style.display = 'block';
+    let selectedTier = null;
+
+    function showWarningModal(tier) {
+      selectedTier = tier;
+      const warningModal = document.getElementById('warningModal');
+      warningModal.style.display = 'block';
       document.body.style.overflow = 'hidden';
+    }
+
+    function closeWarningModal() {
+      const warningModal = document.getElementById('warningModal');
+      warningModal.style.display = 'none';
+      document.body.style.overflow = '';
+      selectedTier = null;
+    }
+
+    function proceedToVIP() {
+      closeWarningModal();
+      if (selectedTier !== null) {
+        const vipModal = document.getElementById('modal' + selectedTier);
+        vipModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeModal(event, tier) {
       event.stopPropagation();
       document.getElementById('modal' + tier).style.display = 'none';
       document.body.style.overflow = '';
+      selectedTier = null;
     }
   </script>
-
 </body>
 </html>
