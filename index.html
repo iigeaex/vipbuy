@@ -41,6 +41,22 @@
 
     .tier:hover {
       transform: translateY(-5px);
+      animation: tierGlow 1.5s infinite alternate;
+    }
+
+    @keyframes tierGlow {
+      0% {
+        background-color: rgba(40, 167, 69, 0.15);
+        box-shadow: 0 0 10px #28a745, 0 0 25px #28a745;
+      }
+      50% {
+        background-color: rgba(30, 144, 255, 0.2);
+        box-shadow: 0 0 15px #1e90ff, 0 0 35px #1e90ff;
+      }
+      100% {
+        background-color: rgba(40, 167, 69, 0.1);
+        box-shadow: 0 0 10px #28a745, 0 0 25px #28a745;
+      }
     }
 
     .tier h2 {
