@@ -157,29 +157,6 @@
       to { opacity: 1; transform: scale(1);}
     }
 
-    .modal-content h2 {
-      margin-top: 0;
-      font-size: 2.2rem;
-      color: #b4f7b4;
-    }
-
-    .modal-content p.price {
-      font-size: 1.8rem;
-      margin: 0.5rem 0 1.5rem;
-      color: #d6f1d6;
-    }
-
-    .modal-content p.description {
-      font-size: 1.1rem;
-      color: #d4d4d4;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal .btn {
-      font-size: 1.2rem;
-      padding: 14px 32px;
-    }
-
     .modal-close {
       position: absolute;
       top: 12px;
@@ -196,6 +173,23 @@
       color: #3de03d;
     }
 
+    .modal-content h2 {
+      font-size: 2.2rem;
+      color: #b4f7b4;
+    }
+
+    .modal-content p.price {
+      font-size: 1.8rem;
+      margin: 0.5rem 0 1.5rem;
+      color: #d6f1d6;
+    }
+
+    .modal-content p.description {
+      font-size: 1.1rem;
+      color: #d4d4d4;
+      margin-bottom: 1.5rem;
+    }
+
     .warning {
       font-size: 0.9rem;
       color: #f8d7da;
@@ -206,78 +200,67 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ✅ SUPPORT SECTION */
+    /* Discord Section Styles */
+    @font-face {
+      font-family: 'Minecraft';
+      src: url('https://fonts.cdnfonts.com/s/19885/MinecraftTen-VGORe.ttf') format('truetype');
+    }
+
     .support-section {
       margin-top: 4rem;
       text-align: center;
-      padding-bottom: 3rem;
     }
 
     .support-text {
       font-size: 1.2rem;
-      color: #d0ffd0;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      text-shadow: 1px 1px 2px #000;
+      margin-bottom: 0.5rem;
+      color: #ccc;
     }
 
-    .arrow {
-      display: inline-block;
+    .support-text .arrow {
       font-size: 2rem;
-      color: #3de03d;
-      margin: 0.5rem 0;
-      animation: bounce 1.2s infinite;
+      display: block;
+      margin: 0.25rem 0;
+      animation: bounce 1.5s infinite;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
+      50% { transform: translateY(-8px); }
     }
 
     .discord-btn {
       display: inline-block;
-      background-color: #3c763d;
-      background-image: linear-gradient(145deg, #4caf50, #2e7d32);
-      border: 4px solid #2c572c;
+      margin-top: 0.5rem;
       padding: 16px 36px;
-      font-size: 1.4rem;
-      font-family: 'Courier New', monospace;
-      color: white;
-      text-decoration: none;
+      font-size: 1.1rem;
+      font-family: 'Minecraft', 'Segoe UI', sans-serif;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #fff;
+      background: repeating-linear-gradient(45deg, #5865f2, #5865f2 10px, #4752c4 10px, #4752c4 20px);
+      border: 3px solid #99aab5;
       border-radius: 8px;
-      margin-top: 1rem;
-      box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      text-shadow: 1px 1px 2px #000;
+      text-decoration: none;
+      box-shadow: 0 0 0 4px #2c2f33, 0 0 12px #5865f2;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      image-rendering: pixelated;
     }
 
     .discord-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
-      background-image: linear-gradient(145deg, #5ffb5f, #3da33d);
+      box-shadow: 0 0 0 4px #2c2f33, 0 0 18px #99aab5, 0 0 28px #7289da;
     }
 
-    /* ✅ RESPONSIVE STYLES */
     @media (max-width: 600px) {
-      .tiers-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .tier {
-        width: 90%;
-      }
-
-      .btn,
-      .modal .btn,
       .discord-btn {
         width: 90%;
         font-size: 1rem;
         padding: 12px 20px;
       }
 
-      .modal-content {
-        width: 95%;
+      .support-text {
+        font-size: 1rem;
       }
     }
   </style>
@@ -305,10 +288,10 @@
     </div>
   </div>
 
-  <!-- ✅ Modals (keep above Discord section) -->
-  <!-- INSERT YOUR MODALS FROM PREVIOUS CODE HERE -->
+  <!-- Modals (Unchanged) -->
+  <!-- [Modal content here - omitted for brevity] -->
 
-  <!-- ✅ Discord Support Section -->
+  <!-- Discord Support Section -->
   <div class="support-section">
     <p class="support-text">
       Need help or have questions?<br>
@@ -331,6 +314,5 @@
       document.body.style.overflow = '';
     }
   </script>
-
 </body>
 </html>
